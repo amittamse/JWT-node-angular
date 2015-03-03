@@ -3,7 +3,7 @@ var faker = require('faker');
 
 var app = express();
 
-app.set('port', (process.env.PORT || 5100)
+app.set('port', (process.env.PORT || 5100));
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(request, response) {
@@ -16,6 +16,6 @@ app.get('/random-user', function(req, res) {
   res.json(user)
 })
 
-app.listen(app.get('port') function() {
+app.listen(app.get('port'), function() {
   console.log('Your app is now running at localhost' + app.get('port') +' HELLO!')
 })
