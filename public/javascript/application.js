@@ -39,16 +39,19 @@
   App.controller('LoginCtrl', ['$scope','UserSession', function($scope, UserSession) {
     var login = this;
 
-    login.username = 'Enter User name'
+    login.username = 'Enter Username'
     login.password = '••••••••••'
 
-    login.submit = submit;
+    login.submit    = submit;
+    login.loggedIn  = getUser;
+    login.logOut    = removeUser;
 
     function submit(username, password) {
 
       UserSession.login(username, password).then(function success(response) {
         login.session = response.data;
         UserSession.session = response.data;
+        UserSession.user = true;
         console.log('user', login.session)
 
       }, handleError)
@@ -57,6 +60,14 @@
         UserSession.session = response.data;
         console.log('Error: ' + UserSession.session.error)
       }
+    }
+
+    function getUser() {
+      return !!(UserSession.user);
+    }
+
+    function removeUser() {
+      UserSession.user = false;
     }
 
   }])
