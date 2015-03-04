@@ -3,8 +3,12 @@
   <title>JWT - Json Web Tokens | Example </title>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/css/foundation.css">
   <style type="text/css">
+
   form#loginForm {display: inline-flex; }
-  form#loginForm input { margin-right: 10px; } </style>
+  form#loginForm input { margin-right: 10px; } 
+  .alert-box { margin-top: 20px;}
+
+  </style>
 </head>
 <body>
   
@@ -28,6 +32,9 @@
 
   <div ng-controller='MainCtrl as main' class='main'>
     <div class='row'>
+
+    <div ng-show='main.notifications.error' class='alert-box alert'> {{ main.notifications.error }} </div>
+
     <h3>Get Random User</h3>
     <div> {{ main.home }}  </div>
 
