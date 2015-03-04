@@ -1,13 +1,16 @@
-var express = require('express');
-var faker = require('faker');
-var cors = require('cors');
-var bodyParser = require('body-parser');
+var express      = require('express');
+var faker        = require('faker');
+var cors         = require('cors');
+var bodyParser   = require('body-parser');
+var jsonwebtoken = require('jsonwebtoken');
 
 var app = express();
 app.use(cors());
 app.use (bodyParser.json());
 
 app.set('port', (process.env.PORT || 5100));
+app.set('JWT_TOKEN', (process.env.JWT_TOKEN))
+
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(request, response) {
@@ -34,7 +37,19 @@ app.get('/random-company', function(req, resp) {
 })
 
  app.post('/login', authenticate, function(req, resp) {
-    resp.send(req.body)
+
+    var secret = app.get('JWT_TOKEN');
+
+    var token = jsonwebtoken.sign({
+      // the entire object
+      content: req.body
+    }, secret)
+
+    var user = req.body;
+    resp.send({ 
+      token: token, user: user 
+    })
+
  })
 
 // Middleware - is injected in the desired endpoint
