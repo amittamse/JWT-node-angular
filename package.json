@@ -9,7 +9,7 @@
     "faker":"2.0.x",
     "cors":"2.5.x",
     "body-parser" : "1.12.0",
-    "jwt": "1.0.x"
+    "jwt": "1.0.1"
   },
   "engines":{
     "node":"0.10.x"
