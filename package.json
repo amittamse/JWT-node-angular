@@ -6,7 +6,8 @@
   },
   "dependencies":{
     "express": "~4.9.x",
-    "faker":"2.0.x"
+    "faker":"2.0.x",
+    "cors":"2.5.x"
   },
   "engines":{
     "node":"0.10.x"

@@ -1,0 +1,26 @@
+<html>
+<head>
+  <title>JWT - Json Web Tokens | Example </title>
+</head>
+<body ng-app='App'>
+
+  <div ng-controller='MainCtrl as main'>
+    <h3>Get Random User</h3>
+    <div> {{ main.home }}  </div>
+    <div>
+      <button ng-click='main.getRandomUser()'>Get A User</button>
+      <pre ng-bind='main.randomUser | json'></pre>
+    </div>
+
+    <div>
+      <button ng-click='main.getRandomCompany()'>Get A Company</button>
+      <pre ng-bind='main.randomCompany | json'></pre>
+    </div>
+
+      
+  </div>
+
+<script type="text/javascript" src='bower_components/angular/angular.js'></script>
+<script type="text/javascript" src='javascript/application.js'></script>
+</body>
+</html>
