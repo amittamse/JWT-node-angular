@@ -1,27 +1,7 @@
 (function() {
   'use strict';
 
-  var App = angular.module('App', []);
-
-  App.constant('API_URL',  window.location.protocol + '//' + window.location.host + window.location.pathname  )
-
-  App.factory('RandomUserFactory', function RandomUserFactory($http, API_URL) {
-
-    function getUser() {
-      return $http.get(API_URL + 'random-user')
-    }
-    function getCompany() {
-      return $http.get(API_URL + 'random-company')
-    }
-
-    return {
-      getUser: getUser,
-      getCompany: getCompany
-    } 
-
-  })
-
-  App.controller('MainCtrl', ['RandomUserFactory', 'API_URL',function(RandomUserFactory, API_URL) {
+  App.controller('MainCtrl', ['RandomUserFactory', 'UserSession', 'API_URL',function(RandomUserFactory, UserSession, API_URL) {
     'use strict';
     var main = this;
     main.home = API_URL;
@@ -42,5 +22,27 @@
     main.getRandomCompany = getRandomCompany;
 
   }]);
+
+  App.controller('LoginCtrl', ['UserSession', function(UserSession) {
+    var login = this;
+
+    login.username = 'Enter User name'
+    login.password = '••••••••••'
+
+    login.submit = submit;
+
+    function submit(username, password) {
+      UserSession.login().then(function success(response) {
+        login.session = response.data;
+      }, handlerError)
+
+      function handleError(response) {
+        console.log('Error' + response.data)
+      }
+    }
+
+
+
+  }])
   
 })();
