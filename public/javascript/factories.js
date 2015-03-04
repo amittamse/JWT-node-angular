@@ -14,18 +14,20 @@ App.factory('RandomUserFactory', function RandomUserFactory($http, API_URL) {
 
 })
 
-
 App.factory('UserSession', function UserSession($http, API_URL) {
 
-  return {
-    login: login
+  var state = {
+    login: login,
+    session: { error: null }
   }
 
-  function login(username, passrod) {
-    return $http.post(API_URL + '/login', {
+  function login(username, password) {
+    return $http.post(API_URL + 'login', {
       username: username,
       password: password
     })
   }
+
+  return state;
 
 })
