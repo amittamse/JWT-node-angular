@@ -3,7 +3,7 @@
 
   var App = angular.module('App', []);
 
-  App.constant('API_URL', 'http://localhost:5100/'  )
+  App.constant('API_URL', 'http://' + window.location.host + window.location.pathname  )
 
   App.factory('RandomUserFactory', function RandomUserFactory($http, API_URL) {
 
