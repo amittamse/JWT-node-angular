@@ -15,4 +15,9 @@ See Server branch
 
 * Errors Are logged to the console.
 
-* Username: testuser@gmail.com / Password: 1234
+### Login with: Username: testuser@gmail.com / Password: 1234
+
+* User is not saved to db: 
+
+TODO: 
+  * Add mongoose.
