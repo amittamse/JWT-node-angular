@@ -1,4 +1,4 @@
-# JWT - Json Web Tokens Application with Node and Angular.
+## JWT - Json Web Token Authentication with Node and Angular.
 
 * This application demonstrates Json Web Token based authentication with Node as a backend and an Angluar front end.
 
