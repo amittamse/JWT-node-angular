@@ -3,13 +3,17 @@ var faker        = require('faker');
 var cors         = require('cors');
 var bodyParser   = require('body-parser');
 var jsonwebtoken = require('jsonwebtoken');
+var expressJwt   = require('express-jwt');
 
 var app = express();
+app.set('JWT_TOKEN', (process.env.JWT_TOKEN))
+
 app.use(cors());
-app.use (bodyParser.json());
+app.use(bodyParser.json());
+app.use(expressJwt({ secret: process.env.JWT_TOKEN }).unless({  path: ['/', '/login' ]}));
 
 app.set('port', (process.env.PORT || 5100));
-app.set('JWT_TOKEN', (process.env.JWT_TOKEN))
+
 
 app.use(express.static(__dirname + '/public'))
 
@@ -39,7 +43,6 @@ app.get('/random-company', function(req, resp) {
  app.post('/login', authenticate, function(req, resp) {
 
     var secret = app.get('JWT_TOKEN');
-
     var token = jsonwebtoken.sign({
       // the entire object
       content: req.body
