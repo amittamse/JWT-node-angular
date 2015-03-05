@@ -4,9 +4,9 @@
 
 * In order to demo app - pull down repo. Launch client ( same app on one port ) - and Server with node server.js ( port 5100 )
 
-### Client => https://node-jwt.herokuapp.com/
+Client => https://node-jwt.herokuapp.com/
 
-### Server => https://stormy-beyond-9592.herokuapp.com/
+Server => https://stormy-beyond-9592.herokuapp.com/
 
 * TODO:
   Refactor the application.js
