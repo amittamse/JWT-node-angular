@@ -44,9 +44,8 @@ app.get('/random-company', function(req, resp) {
 
     var secret = app.get('JWT_TOKEN');
     var token = jsonwebtoken.sign({
-      // the entire object
       content: req.body
-    }, secret)
+    }, secret, { expiresInMinutes: 60*5 } )
 
     var user = req.body;
     resp.send({ 
