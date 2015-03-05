@@ -36,7 +36,7 @@
 
   }]);
 
-  App.controller('LoginCtrl', ['$scope','UserSession', function($scope, UserSession) {
+  App.controller('LoginCtrl', ['$scope','UserSession', 'AuthTokenStore', function($scope, UserSession, AuthTokenStore) {
     var login = this;
 
     login.username = 'Enter Username'
@@ -63,11 +63,12 @@
     }
 
     function getUser() {
-      return !!(UserSession.user);
+      var state =  !!(AuthTokenStore.getToken());
+      return state;
     }
 
     function removeUser() {
-      UserSession.user = false;
+      UserSession.logout()
     }
 
   }])
