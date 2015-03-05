@@ -1,0 +1,64 @@
+<html ng-app='App'>
+<head>
+  <title>JWT - Json Web Tokens | Example </title>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/css/foundation.css">
+  <style type="text/css">
+
+  form#loginForm {display: inline-flex; }
+  form#loginForm input { margin-right: 10px; } 
+  .alert-box { margin-top: 20px;}
+
+  </style>
+</head>
+<body>
+  
+  <nav class='top-bar' ng-controller='LoginCtrl as login'>
+    <ul class='title-area'>
+      <li><a href="#">
+        <h4>JWT PROOF of Concept</a></h4>
+      </li>
+    </ul>
+
+    <ul>
+      <li class='large-6 right' ng-hide='login.loggedIn()'>
+        <form id='loginForm' class='right' ng-submit='login.submit(login.username, login.password)'>
+          <input ng-model='login.username' type='text' class='large-2' >
+          <input ng-model='login.password' type='password' class='' >
+          <button>Go</button>
+        </form>
+      </li>
+      <li ng-show='login.loggedIn()' class='large-3 right'>
+        <a href="#">Hey: Username </a>
+        <button ng-click='login.logOut()'>Log Out</button>
+      </li>
+    </ul>
+
+  </nav>
+
+  <div ng-controller='MainCtrl as main' class='main'>
+    <div class='row'>
+
+    <div ng-show='main.notifications.error' class='alert-box alert'> {{ main.notifications.error }} </div>
+
+    <h3>Get Random User</h3>
+    <div> {{ main.home }}  </div>
+
+    <div>
+      <button ng-click='main.getRandomUser()'>Get A User</button>
+      <pre ng-bind='main.randomUser | json'></pre>
+    </div>
+
+    <div>
+      <button ng-click='main.getRandomCompany()'>Get A Company</button>
+      <pre ng-bind='main.randomCompany | json'></pre>
+    </div>
+    </div>
+  </div>
+
+<script type="text/javascript" src='bower_components/angular/angular.js'></script>
+<script type="text/javascript" src='javascript/config/setup.js'></script>
+<script type="text/javascript" src='javascript/factories.js'></script>
+<script type="text/javascript" src='javascript/application.js'></script>
+
+</body>
+</html>
